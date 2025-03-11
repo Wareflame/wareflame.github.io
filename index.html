@@ -11,11 +11,23 @@
             text-align: center;
             margin-top: 50px;
         }
-        #loading {
+        #loading, #options, #inputSection {
             display: none;
             font-size: 24px;
             color: #333;
             margin-top: 20px;
+        }
+        #options {
+            margin-top: 40px;
+        }
+        #options div {
+            margin: 10px 0;
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+        #options div:hover {
+            color: darkblue;
         }
     </style>
 </head>
@@ -27,6 +39,19 @@
     </form>
 
     <div id="loading">Loading...</div>
+
+    <div id="inputSection">
+        <label for="numberInput">Enter a number:</label><br>
+        <input type="number" id="numberInput" name="numberInput" placeholder="Enter a number"><br><br>
+    </div>
+
+    <div id="options">
+        <div id="option1">1. History</div>
+        <div id="option2">2. Downloading app</div>
+        <div id="option3">3. Contact us</div>
+        <div id="option4">4. Help</div>
+        <div id="option5">5. Mods</div>
+    </div>
 
     <script>
         document.getElementById('loginForm').addEventListener('submit', function(event) {
@@ -45,10 +70,73 @@
                 loadingDiv.id = 'loading';
                 loadingDiv.textContent = 'Loading...';
                 document.body.appendChild(loadingDiv);
+
+                // First loading for 4 seconds
+                setTimeout(() => {
+                    loadingDiv.textContent = ''; // Clear loading message
+                    setTimeout(() => {
+                        loadingDiv.textContent = 'Loading...'; // Show loading again for 2 seconds
+                        setTimeout(() => {
+                            // Clear loading and show input section and options
+                            loadingDiv.remove();
+                            showInputAndOptions();
+                        }, 2000); // 2 seconds
+                    }, 1000); // 1 second delay
+                }, 4000); // 4 seconds
             } else {
                 alert('Invalid unique login number. Please try again.');
             }
         });
+
+        function showInputAndOptions() {
+            // Create and display the input section
+            const inputSection = document.createElement('div');
+            inputSection.id = 'inputSection';
+            inputSection.innerHTML = `
+                <label for="numberInput">Enter a number:</label><br>
+                <input type="number" id="numberInput" name="numberInput" placeholder="Enter a number"><br><br>
+            `;
+            document.body.appendChild(inputSection);
+
+            // Create and display the options
+            const optionsDiv = document.createElement('div');
+            optionsDiv.id = 'options';
+            optionsDiv.innerHTML = `
+                <div id="option1">1. History</div>
+                <div id="option2">2. Downloading app</div>
+                <div id="option3">3. Contact us</div>
+                <div id="option4">4. Help</div>
+                <div id="option5">5. Mods</div>
+            `;
+            document.body.appendChild(optionsDiv);
+
+            // Add event listeners to options
+            document.getElementById('option1').addEventListener('click', () => handleOption(1));
+            document.getElementById('option2').addEventListener('click', () => handleOption(2));
+            document.getElementById('option3').addEventListener('click', () => handleOption(3));
+            document.getElementById('option4').addEventListener('click', () => handleOption(4));
+            document.getElementById('option5').addEventListener('click', () => handleOption(5));
+        }
+
+        function handleOption(option) {
+            switch (option) {
+                case 1:
+                    alert('Please confirm in your email.');
+                    break;
+                case 2:
+                    alert('Downloading has been closed.');
+                    break;
+                case 3:
+                case 4:
+                    alert('Invalid command.');
+                    break;
+                case 5:
+                    alert('Mods plaza has been closed.');
+                    break;
+                default:
+                    alert('Invalid option.');
+            }
+        }
     </script>
 </body>
 </html>
@@ -57,8 +145,8 @@
 <h1>情票  41.83 USD</h1>
 <h1>Зигфрид Тавов  11.30 USD</h1>
 <h1>bLACKsmith  6.31 USD</h1>
-<h1>我可是个大屌丝  5 USD</h1>
-<h1>Ślovaca  1 USD</h1>
+<h1>我可是个大屌丝  5.43 USD</h1>
+<h1>Ślovaca  1.90 USD</h1>
 <h1>苏倾年  1 USD</h1>
 <h1>------------------</h1>
 <h1>🍆🍑😝</h1>
