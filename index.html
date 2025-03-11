@@ -1,4 +1,57 @@
 <h1>The Wareflame page has been closed and there is a high probability that we won't be open for new user registrations in 2025(there's a feature that upsets the Chinese government), sorry.</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Unique Number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #loading {
+            display: none;
+            font-size: 24px;
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form id="loginForm">
+        <label for="uniqueNumber">Enter your unique login number:</label><br>
+        <input type="text" id="uniqueNumber" name="uniqueNumber" placeholder="Unique Login Number" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="loading">Loading...</div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            // Get the input value
+            const inputValue = document.getElementById('uniqueNumber').value;
+
+            // Check if the input matches the specific number
+            if (inputValue === '32010620080915085013801538236') {
+                // Clear the page content
+                document.body.innerHTML = '';
+
+                // Show the loading message
+                const loadingDiv = document.createElement('div');
+                loadingDiv.id = 'loading';
+                loadingDiv.textContent = 'Loading...';
+                document.body.appendChild(loadingDiv);
+            } else {
+                alert('Invalid unique login number. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>
 <h1>Thank you to the following sponsors! Since January 2024</h1>
 <h1>明人不放暗屁  52.29 USD</h1>
 <h1>情票  41.83 USD</h1>
